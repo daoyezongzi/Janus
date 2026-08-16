@@ -1,5 +1,7 @@
 # Janus
 
+**Modified from https://github.com/obra/superpowers**
+
 > A lightweight, risk-adaptive workflow for AI-assisted development and research.
 
 Janus is a personal skill system for two recurring jobs:
