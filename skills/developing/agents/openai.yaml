@@ -1,0 +1,4 @@
+interface:
+  display_name: "Janus Developing"
+  short_description: "Risk-adaptive coding and research workflow"
+  default_prompt: "Use $developing to plan, implement, verify, record, and report a task."

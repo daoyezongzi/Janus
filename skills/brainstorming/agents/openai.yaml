@@ -1,0 +1,4 @@
+interface:
+  display_name: "Janus Brainstorming"
+  short_description: "Lightweight framing for ambiguous work"
+  default_prompt: "Use $brainstorming when uncertainty or design space justifies thinking before action."

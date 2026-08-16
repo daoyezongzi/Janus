@@ -1,0 +1,4 @@
+interface:
+  display_name: "Janus Debugging"
+  short_description: "Evidence-first root-cause diagnosis"
+  default_prompt: "Use $debugging when observed behavior differs from what was expected."
