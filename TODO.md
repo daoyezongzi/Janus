@@ -3,7 +3,7 @@
 ## Active
 
 - [x] Forward-test the three Janus skills on one small software task and one research task.
-- [ ] Decide whether to replace the currently registered `brainstorming` skill with Janus after reviewing V1 behavior.
+- [x] Replace the registered Superpowers workflow skills with Janus in the local Codex skill directory.
 - [ ] Verify Janus skill installation and discovery in a fresh Codex session.
 - [ ] Test the Idea Refiner -> Janus handoff using an actual PRD artifact.
 
@@ -11,7 +11,7 @@
 
 - [ ] Add an install/update helper only if manual copying becomes repetitive.
 - [ ] Add narrowly scoped research or experiment templates only when repeated usage justifies them.
-- [ ] Publish Janus to GitHub only after local behavior and attribution are accepted.
+- [x] Publish Janus to GitHub after local behavior and attribution were accepted.
 
 ## Completed
 
@@ -21,3 +21,4 @@
 - [x] Define coexistence with explicitly invoked skills and authoritative upstream artifacts.
 - [x] Confirm Janus remains usable when Idea Refiner is absent.
 - [x] Create the V1 repository structure and initial skill drafts.
+- [x] Register Janus and remove the active Superpowers plugin/workflow registration.

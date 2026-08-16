@@ -24,3 +24,11 @@
 - **Research result:** The workflow consumed an upstream experiment brief without rewriting it, compared run manifests and raw metrics before proposing fixes, and kept implementation evidence, execution evidence, and hypothesis support separate.
 - **Decision:** Keep the current three-skill V1 surface. Do not add mandatory worktrees, subagents, approval rounds, or domain-specific templates based on these tests.
 - **Follow-up:** Test a real Idea Refiner PRD-to-Janus handoff after the local project is committed; keep that integration optional.
+
+## 2026-08-16 - Replace active Superpowers registration
+
+- **Changed:** Moved the 14 active Superpowers workflow skill directories and its `.tmp` plugin cache out of the active Codex paths into `C:\Users\Soyo\Documents\Codex\2026-08-16\yao\work\removed-superpowers-2026-08-16`.
+- **Changed:** Installed Janus `brainstorming`, `developing`, and `debugging` from the public Janus repository into `C:\Users\Soyo\.codex\skills`.
+- **Verification:** All three installed skills passed `quick_validate.py`; their `SKILL.md` hashes match the Janus repository; no active Superpowers plugin path or old workflow directory remains.
+- **Preserved:** Frontend skills, `socrates`, PDF, Office, and `idea-refiner` were not changed. The historical `claude_imports` Superpowers archive was left untouched because it is not registered or active.
+- **Result:** Janus is now the active lightweight workflow while Idea Refiner remains an independent optional upstream companion.
