@@ -9,6 +9,8 @@ description: Use when a bug, failed test, unexpected result, or research anomaly
 
 Do not stack speculative fixes. Each change should test an explicit explanation of the observed divergence.
 
+For a long-running or multi-step investigation, keep a durable Working Plan. Within an already plan-backed investigation, after conversation compaction or an explicit request to resume, check whether the diagnostic state is still clear; if not, re-read the known plan and reconcile it with the current reproduction evidence, repository diff, and recorded results before continuing. A fresh conversation alone does not trigger plan discovery.
+
 ## Workflow
 
 1. **Reproduce** the original failure or anomaly with the smallest reliable command, input, or experiment.

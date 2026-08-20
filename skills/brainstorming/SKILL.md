@@ -61,7 +61,7 @@ Keep engineering claims separate from research claims:
 
 If another skill was explicitly invoked, or has produced an authoritative upstream artifact such as a PRD, consume that output instead of repeating its responsibility. Continue from the appropriate Janus stage and preserve the upstream artifact as the source of truth. This integration is optional: if no upstream skill is installed or invoked, the software and research modes above remain complete and usable on their own.
 
-Return a proportionate Working Plan or a clear handoff to `developing`. Do not create separate spec and plan documents here.
+Return a proportionate Working Plan or a clear handoff to `developing`. For broad, long-running, high-risk, or multi-step work, persist that plan using the durable-plan rules in `developing`; do not create separate spec and plan documents here.
 
 ## Red flags
 

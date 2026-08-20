@@ -24,7 +24,7 @@ Janus is inspired by [obra/superpowers](https://github.com/obra/superpowers). It
 | Skill | Responsibility |
 | --- | --- |
 | `brainstorming` | Frame genuine software, product, architecture, research, or experiment uncertainty. Skip it for obvious mechanical changes. |
-| `developing` | Main workflow: context, proportionate Working Plan, self-review, build/run, verification, diff inspection, project recording, and report. |
+| `developing` | Main workflow: context, proportionate Working Plan, self-review, build/run, verification, context recovery, diff inspection, project recording, and report. |
 | `debugging` | Compressed evidence-first root-cause diagnosis for bugs, failed tests, unexpected results, and research anomalies. |
 
 ## Compatibility with specialized skills
@@ -68,7 +68,7 @@ TDD, worktrees, subagents, and formal review are risk-based controls. They are n
 
 ## Working Plan
 
-Janus uses one proportionate Working Plan instead of separate spec and implementation-plan documents. It may contain:
+Janus uses one proportionate Working Plan instead of separate spec and implementation-plan documents. Focused normal work can use an in-thread or structured plan. Broad, long-running, high-risk, or multi-step work that may cross a context or session boundary should persist the plan in the project's existing plan location, or `docs/plans/YYYY-MM-DD-<task>.md` when none exists. A plan may contain:
 
 ```markdown
 # Working Plan
@@ -81,7 +81,11 @@ Janus uses one proportionate Working Plan instead of separate spec and implement
 ## Verification
 ```
 
-Omit sections that do not help. A trivial change can be two sentences; an architectural change can include alternatives, compatibility, migration, rollback, and risks.
+Omit sections that do not help. A trivial change does not need a plan solely for ceremony; an architectural change can include alternatives, compatibility, migration, rollback, and risks.
+
+### Context recovery
+
+A fresh execution conversation does not automatically scan for or read plans. Read a known plan when the user points to it, asks to execute or continue plan-backed work, or retained task context already identifies it as the source of truth. Within such a task, after conversation compaction or an explicit resume, first check whether the goal, next step, completed work, and constraints remain clear. If they do, continue without reloading the file. If anything is unclear or contradictory, re-read the known plan, inspect `git status` and the relevant diff or artifacts, consult `LOG.md` / `TODO.md`, reconcile actual progress, and update the structured task plan before continuing. Do not guess among multiple possible plans; compaction is a reason to check clarity, not an unconditional reload trigger.
 
 ## Recoverable project state
 

@@ -15,6 +15,7 @@
 
 ## Completed
 
+- [x] Add durable plans and explicit context recovery for large or long-running tasks.
 - [x] Define the risk-adaptive Janus workflow.
 - [x] Merge spec and plan into Working Plan.
 - [x] Make LOG/TODO part of substantive-work completion.

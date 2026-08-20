@@ -1,6 +1,6 @@
 ---
 name: developing
-description: Use when implementing, modifying, running, or evaluating a non-trivial software or research task that needs a proportionate plan, verification, state recording, or a clear handoff.
+description: Use when implementing, modifying, running, or evaluating a non-trivial software or research task that needs proportionate planning, verification, state recording, context recovery, or a clear handoff.
 ---
 
 # Janus Developing
@@ -10,11 +10,26 @@ description: Use when implementing, modifying, running, or evaluating a non-triv
 Use one workflow for coding and research, scaled to risk:
 
 ```text
-CONTEXT -> optional BRAINSTORM -> WORKING PLAN -> SELF REVIEW
+CONTEXT -> optional BRAINSTORM -> WORKING PLAN when warranted -> SELF REVIEW
 -> BUILD -> VERIFY -> INSPECT DIFF -> RECORD -> REPORT
 ```
 
-The plan is a thinking aid, not a second deliverable. Keep it proportional to uncertainty, impact, and reversibility.
+The plan is a thinking and recovery aid, not a second deliverable. Use it when task size, uncertainty, risk, or expected duration justifies it, and keep its detail proportional to uncertainty, impact, and reversibility.
+
+## Durable plans and context recovery
+
+Inspect enough read-only context to make a grounded plan before substantial implementation.
+
+- For a broad, long-running, high-risk, or multi-step task likely to cross a context or session boundary, persist the Working Plan in the project's existing plan location. If none exists, use `docs/plans/YYYY-MM-DD-<task>.md`.
+- A fresh execution conversation does not by itself require discovering, scanning for, or reading a plan. Read a known plan when the user points to it, asks to execute or continue plan-backed work, or the retained task context identifies it as the source of truth.
+- Use the task's structured plan mechanism when available to mirror the current execution steps and statuses; the plan file remains the durable statement of intent and verification.
+- Within an already plan-backed task, after conversation compaction or an explicit request to resume, first check whether the goal, next step, completed work, and constraints are still clear from the retained context and structured plan. If they are clear, continue without reloading the file.
+- If any of that state is unclear or contradictory, stop and recover: re-read the known relevant plan, inspect `git status` and the relevant diff or artifacts, consult `LOG.md` / `TODO.md` when present, reconcile actual progress, then update the structured plan before continuing. Do not guess among multiple plans; ask for direction when the intended plan cannot be identified safely.
+- If no durable plan exists, recover from the latest request, retained summary, repository state, and project records; create a plan only if the remaining work now warrants one.
+- Do not re-read a plan on every turn, and do not search for one solely because a new conversation started. Compaction inside a plan-backed task is a reason to check clarity, not an unconditional reload trigger.
+- If scope or evidence changes the approach, revise the durable plan instead of silently abandoning it.
+
+Small, obvious, reversible work does not need a plan solely for ceremony.
 
 ## Work with other skills
 
@@ -60,7 +75,7 @@ Do not upgrade a task merely because a heavier workflow exists.
 
 ## Working Plan
 
-Use one concise document or in-thread section that combines design and execution:
+When a plan is warranted, use one structured task plan, concise document, or durable plan file that combines design and execution:
 
 ```markdown
 # Working Plan
@@ -75,7 +90,7 @@ Use one concise document or in-thread section that combines design and execution
 ## Verification
 ```
 
-Omit sections that do not help this task. A trivial change may need only two sentences. A high-risk change may need alternatives, compatibility, migration, rollback, and risks.
+Omit sections that do not help this task. A focused normal task may need only a short in-thread or structured plan. A large or high-risk change may need a durable file covering alternatives, compatibility, migration, rollback, and risks.
 
 ## Self-review
 

@@ -32,3 +32,12 @@
 - **Verification:** All three installed skills passed `quick_validate.py`; their `SKILL.md` hashes match the Janus repository; no active Superpowers plugin path or old workflow directory remains.
 - **Preserved:** Frontend skills, `socrates`, PDF, Office, and `idea-refiner` were not changed. The historical `claude_imports` Superpowers archive was left untouched because it is not registered or active.
 - **Result:** Janus is now the active lightweight workflow while Idea Refiner remains an independent optional upstream companion.
+
+## 2026-08-20 - Add plan-backed context recovery
+
+- **Changed:** Broad, long-running, high-risk, or multi-step tasks that may cross a context or session boundary now persist a Working Plan in the project; trivial work remains plan-free unless planning adds real value.
+- **Decision:** A fresh execution conversation does not automatically discover or read plans. Read a known plan only when the user points to it, requests plan-backed execution or continuation, or retained task context identifies it; after compaction, re-read it only when execution state is unclear or contradictory.
+- **Reason:** Codex compaction is designed to preserve task-relevant context, but its compacted state is opaque. The plan supplies durable intent while `git status`, diffs, artifacts, LOG, and TODO supply observable execution state.
+- **Evidence:** The archived Superpowers workflow writes multi-step plans to `docs/superpowers/plans`, reads and reviews them at execution start, and mirrors extracted tasks into Todo state; it has no separate same-session post-compaction hook.
+- **Preserved:** Small reversible work stays lightweight; brainstorming, TDD, worktrees, subagents, formal review, and plan-file creation remain proportional to task risk and duration.
+- **Verification:** All repository and installed Janus skills passed `quick_validate.py`; corresponding skill and UI metadata files match by hash, and `git diff --check` reported no formatting errors.
