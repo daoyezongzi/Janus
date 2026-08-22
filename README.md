@@ -24,7 +24,7 @@ Janus is inspired by [obra/superpowers](https://github.com/obra/superpowers). It
 | Skill | Responsibility |
 | --- | --- |
 | `brainstorming` | Frame genuine software, product, architecture, research, or experiment uncertainty. Skip it for obvious mechanical changes. |
-| `developing` | Main workflow: context, proportionate Working Plan, self-review, build/run, verification, context recovery, diff inspection, project recording, and report. |
+| `developing` | Main workflow: context, proportionate Working Plan, self-review, build/run, verification, context recovery, project recording, diff inspection, commit when applicable, and report. |
 | `debugging` | Compressed evidence-first root-cause diagnosis for bugs, failed tests, unexpected results, and research anomalies. |
 
 ## Compatibility with specialized skills
@@ -45,12 +45,15 @@ flowchart TD
     D --> F["SELF REVIEW"]
     F --> G["BUILD / RUN"]
     G --> H["VERIFY"]
-    H --> I["INSPECT DIFF / ARTIFACTS"]
-    I --> J["UPDATE LOG / TODO"]
-    J --> K["REPORT"]
+    H --> I["UPDATE LOG / TODO"]
+    I --> J["INSPECT DIFF / ARTIFACTS"]
+    J --> K["COMMIT WHEN APPLICABLE"]
+    K --> L["REPORT"]
 ```
 
 For a bug or anomalous result, use `debugging` before changing code or experiment conditions. For a research task, keep implementation evidence, experiment evidence, and hypothesis support separate.
+
+This README is a concise overview. [`skills/developing/SKILL.md`](skills/developing/SKILL.md) is the normative source for execution rules and conditional details.
 
 ## Risk-adaptive effort
 
@@ -60,9 +63,9 @@ Planning effort scales with:
 uncertainty x impact x reversibility
 ```
 
-- **Trivial:** inspect, change, verify, inspect diff, record if meaningful, report.
-- **Normal:** short Working Plan, self-review, implementation or run, verification, diff/artifact inspection, state update, report.
-- **High risk:** brainstorm, detailed Working Plan, self-review, isolation if useful, stronger tests or review, verification, diff/artifact inspection, state update, report.
+- **Trivial:** inspect, change, verify, record if meaningful, inspect diff, commit when applicable, report.
+- **Normal:** short Working Plan, self-review, implementation or run, verification, state update, diff/artifact inspection, commit when applicable, report.
+- **High risk:** brainstorm, detailed Working Plan, self-review, isolation if useful, stronger tests or review, verification, state update, diff/artifact inspection, commit when applicable, report.
 
 TDD, worktrees, subagents, and formal review are risk-based controls. They are not default ceremony. Verification is the invariant: do not claim success without fresh evidence.
 
@@ -92,10 +95,13 @@ A fresh execution conversation does not automatically scan for or read plans. Re
 After substantive work:
 
 ```text
-VERIFY -> INSPECT DIFF -> UPDATE LOG -> SYNC TODO -> REPORT
+VERIFY -> UPDATE LOG -> SYNC TODO -> INSPECT DIFF
+-> COMMIT WHEN APPLICABLE -> REPORT
 ```
 
 `LOG.md` is append-oriented history for decisions, results, evidence, failed approaches, discoveries, and constraints useful to future sessions. `TODO.md` is the current state: completed work, active work, invalidated ideas, priorities, and the next useful action.
+
+In a Git repository, inspect the existing status before editing and keep prior or unrelated changes out of the task. Commit task-owned changes after verification unless the user opts out or they cannot be isolated safely. A trivial task usually needs one commit; split only genuinely independent, verified units, never push automatically, and report commit IDs plus any uncommitted remainder.
 
 > Code tells what the project is. LOG tells how it got here. TODO tells where it goes next.
 
@@ -123,9 +129,9 @@ Use Idea Refiner when the product or creative idea itself is still being defined
 
 ## Software example
 
-For a small README command correction, skip brainstorming: inspect the file, make the narrow edit, reread the result, inspect the diff, and record only if the decision matters later.
+For a small README command correction, skip brainstorming: inspect the file, make the narrow edit, reread the result, record only if the decision matters later, inspect the diff, and make one commit when applicable.
 
-For a new retry policy, write a short Working Plan, choose a regression test because the behavior is reusable, implement the smallest change, run the relevant tests, inspect the diff, update state, and explain the tradeoff.
+For a new retry policy, write a short Working Plan, choose a regression test because the behavior is reusable, implement the smallest change, run the relevant tests, update state, inspect the diff, commit the verified change when applicable, and explain the tradeoff.
 
 ## Research example
 

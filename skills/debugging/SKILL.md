@@ -57,3 +57,5 @@ After repeated failed hypotheses, stop patching and recheck:
 ## Completion standard
 
 Do not report a fix merely because the edited code looks plausible. Report the reproduction command, evidence, root cause, change, rerun result, and any remaining uncertainty.
+
+If the investigation changes files, finish the repository handoff through `developing`, including project recording and commit when applicable; do not duplicate that workflow here.

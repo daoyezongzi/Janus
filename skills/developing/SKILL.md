@@ -11,10 +11,12 @@ Use one workflow for coding and research, scaled to risk:
 
 ```text
 CONTEXT -> optional BRAINSTORM -> WORKING PLAN when warranted -> SELF REVIEW
--> BUILD -> VERIFY -> INSPECT DIFF -> RECORD -> REPORT
+-> BUILD -> VERIFY -> RECORD -> INSPECT DIFF -> COMMIT WHEN APPLICABLE -> REPORT
 ```
 
 The plan is a thinking and recovery aid, not a second deliverable. Use it when task size, uncertainty, risk, or expected duration justifies it, and keep its detail proportional to uncertainty, impact, and reversibility.
+
+This file is the normative source for Janus execution rules. Keep summaries elsewhere concise and refer here instead of duplicating conditional details.
 
 ## Durable plans and context recovery
 
@@ -37,7 +39,7 @@ Janus may coexist with specialized skills. If another skill is explicitly invoke
 
 1. Read the relevant output and identify its current decisions, constraints, and open risks.
 2. Do not duplicate the upstream skill's discovery, product definition, or domain procedure.
-3. Continue from the Janus stage that remains: Working Plan, Build, Verify, Record, or Report.
+3. Continue from the Janus stage that remains: Working Plan, Build, Verify, Record, Commit, or Report.
 4. Treat a real contradiction as a reason to pause and resolve it; do not silently overwrite the upstream source of truth.
 
 No Janus stage depends on a particular external skill. If no upstream artifact exists, use the local context and the optional `brainstorming` stage; do not stop to request installation of another skill.
@@ -49,7 +51,8 @@ No Janus stage depends on a particular external skill. If no upstream artifact e
 Use for obvious, local, reversible edits.
 
 ```text
-inspect -> change -> verify -> diff -> record if meaningful -> report
+inspect -> change -> verify -> record if meaningful -> diff
+-> commit when applicable -> report
 ```
 
 ### Normal
@@ -58,7 +61,8 @@ Use for a focused feature, analysis, or experiment.
 
 ```text
 inspect -> short Working Plan -> self-review -> build/run
--> verify -> inspect diff or artifacts -> update project state -> report
+-> verify -> update project state -> inspect diff or artifacts
+-> commit when applicable -> report
 ```
 
 ### High risk
@@ -68,7 +72,8 @@ Use when the change is broad, difficult to reverse, security-sensitive, algorith
 ```text
 inspect -> brainstorm -> detailed Working Plan -> self-review
 -> isolate if useful -> build/run -> stronger tests or review
--> verify -> inspect diff/artifacts -> update project state -> report
+-> verify -> update project state -> inspect diff/artifacts
+-> commit when applicable -> report
 ```
 
 Do not upgrade a task merely because a heavier workflow exists.
@@ -106,7 +111,7 @@ Revise the Working Plan in place. Do not create a separate review document or de
 
 ## Build and verify
 
-Inspect the real files and existing state before editing. Keep changes narrow and follow local conventions.
+Inspect the real files and existing state before editing. In a Git worktree, inspect the existing status first and keep task changes separate from prior or unrelated changes. Keep changes narrow and follow local conventions.
 
 - Use test-first development when a stable reusable component, core behavior, or regression risk justifies it.
 - For a bug, prefer a regression test; for a research prototype, the experiment or evaluation may be the relevant verification.
@@ -126,7 +131,8 @@ For research, report these separately:
 After substantive work:
 
 ```text
-VERIFY -> INSPECT DIFF -> UPDATE LOG -> SYNC TODO -> REPORT
+VERIFY -> UPDATE LOG -> SYNC TODO -> INSPECT DIFF
+-> COMMIT WHEN APPLICABLE -> REPORT
 ```
 
 Prefer existing project logs when they already exist. Otherwise, use:
@@ -136,13 +142,22 @@ Prefer existing project logs when they already exist. Otherwise, use:
 
 Do not write a step-by-step activity diary.
 
+## Commit when applicable
+
+If a task changes files in a Git repository, commit the task-owned changes after verification unless the user opts out or they cannot be isolated safely.
+
+- Stage only task-owned changes and inspect what will be committed. Never include pre-existing or unrelated work.
+- A trivial task usually needs one commit. Split only when independently useful, verified changes make separate commits clearer or safer.
+- Use a clear commit message and never push automatically.
+- Check repository status once after committing. Report commit IDs and explain any uncommitted remainder.
+
 ## Report
 
 Explain the result in four parts:
 
 1. **What we did** - the concrete change or experiment.
 2. **Why** - the selected design and important tradeoffs.
-3. **Verification / Result** - commands, tests, outputs, or experiment evidence.
-4. **What remains** - limitations, risks, and the next action.
+3. **Verification / Result** - commands, tests, outputs, experiment evidence, and commit IDs when created.
+4. **What remains** - limitations, risks, uncommitted remainder, and the next action.
 
 Keep technical details as supporting evidence, not as a substitute for explanation.

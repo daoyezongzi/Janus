@@ -15,6 +15,7 @@
 
 ## Completed
 
+- [x] Add lightweight commit-when-applicable handling without mandatory batching or automatic push.
 - [x] Add durable plans and explicit context recovery for large or long-running tasks.
 - [x] Define the risk-adaptive Janus workflow.
 - [x] Merge spec and plan into Working Plan.

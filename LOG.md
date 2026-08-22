@@ -41,3 +41,12 @@
 - **Evidence:** The archived Superpowers workflow writes multi-step plans to `docs/superpowers/plans`, reads and reviews them at execution start, and mirrors extracted tasks into Todo state; it has no separate same-session post-compaction hook.
 - **Preserved:** Small reversible work stays lightweight; brainstorming, TDD, worktrees, subagents, formal review, and plan-file creation remain proportional to task risk and duration.
 - **Verification:** All repository and installed Janus skills passed `quick_validate.py`; corresponding skill and UI metadata files match by hash, and `git diff --check` reported no formatting errors.
+
+## 2026-08-23 - Add lightweight Git commit closure
+
+- **Changed:** Moved project recording before final diff inspection and added commit-when-applicable to the `developing` workflow, README overview, debugging handoff, and UI metadata.
+- **Decision:** In a Git repository, commit only task-owned changes after verification; use one commit for a typical trivial task and split only genuinely independent, verified units.
+- **Decision:** Never push automatically, never mix prior or unrelated work into a commit, and report commit IDs plus any uncommitted remainder.
+- **Decision:** Keep `skills/developing/SKILL.md` as the normative execution source; README stays a concise overview and `debugging` delegates repository handoff instead of duplicating Git rules.
+- **Reason:** Local commits improve recoverability and session handoff without restoring Superpowers-style mandatory plans, worktrees, approval gates, or forced commit batching.
+- **Verification:** The changed `developing` and `debugging` skills passed `quick_validate.py`; the README normative-source link resolves; `git diff --check` reported no formatting errors.

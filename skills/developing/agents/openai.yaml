@@ -1,4 +1,4 @@
 interface:
   display_name: "Janus Developing"
-  short_description: "Risk-adaptive planning and context recovery"
-  default_prompt: "Use $developing to plan when the task warrants it, implement, verify, recover context when needed, record, and report."
+  short_description: "Risk-adaptive delivery, recovery, and Git commits"
+  default_prompt: "Use $developing to plan proportionately, implement, verify, recover context when needed, record, commit when applicable, and report."
