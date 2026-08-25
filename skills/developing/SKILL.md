@@ -33,6 +33,17 @@ Inspect enough read-only context to make a grounded plan before substantial impl
 
 Small, obvious, reversible work does not need a plan solely for ceremony.
 
+## Documentation discipline
+
+Apply these rules to documentation and process side effects, not to the code, tests, configuration, data, or requested deliverables needed to complete the task.
+
+- A warranted durable Working Plan is an intentional exception: reuse the project's plan location or use `docs/plans/YYYY-MM-DD-<task>.md` as described above.
+- After ordinary substantive work, record durable execution state in the project's existing log and TODO surfaces. If none exist, use `LOG.md` and `TODO.md`. Do not create standalone process files such as `NOTES.md`, `ANALYSIS.md`, `REVIEW.md`, `SUMMARY.md`, or ad hoc handoff documents merely to narrate the work. Keep transient reasoning and scratch notes in the conversation, structured plan, or a temporary location outside the project tree.
+- Create or edit other project documentation only when it is a requested deliverable, is necessary to keep a task-owned public contract accurate, or is the warranted durable plan above. Do not duplicate information that belongs in an existing document, log, or TODO.
+- When a new project document is warranted, reuse the project's existing categorized documentation structure. If no convention exists, place it in the smallest fitting `docs/<category>/` location and create only the category the task needs. Do not build a speculative documentation tree or reorganize existing files without a separate reason and authorization.
+- Preserve conventional root or tool-required locations such as `README.md`, `LICENSE`, `CHANGELOG.md`, `CONTRIBUTING.md`, `AGENTS.md`, project logs and TODOs, and files whose path is part of a tool contract.
+- Treat a PRD, proposal, project brief, product plan, or other upstream planning artifact as read-only unless the user explicitly asks to edit that artifact. A request to implement or continue its plan does not grant permission to rewrite it. If implementation evidence contradicts it, report the conflict and record the actionable state in the log or TODO rather than silently changing the artifact.
+
 ## Work with other skills
 
 Janus may coexist with specialized skills. If another skill is explicitly invoked, or has already produced an authoritative upstream artifact such as a PRD, API contract, dataset protocol, or experiment brief:

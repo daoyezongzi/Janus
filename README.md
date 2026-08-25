@@ -90,6 +90,12 @@ Omit sections that do not help. A trivial change does not need a plan solely for
 
 A fresh execution conversation does not automatically scan for or read plans. Read a known plan when the user points to it, asks to execute or continue plan-backed work, or retained task context already identifies it as the source of truth. Within such a task, after conversation compaction or an explicit resume, first check whether the goal, next step, completed work, and constraints remain clear. If they do, continue without reloading the file. If anything is unclear or contradictory, re-read the known plan, inspect `git status` and the relevant diff or artifacts, consult `LOG.md` / `TODO.md`, reconcile actual progress, and update the structured task plan before continuing. Do not guess among multiple possible plans; compaction is a reason to check clarity, not an unconditional reload trigger.
 
+### Documentation discipline
+
+A warranted durable plan remains part of the workflow. Outside that plan and documentation the task actually requires, Janus records project state in the existing log and TODO instead of generating side files such as `NOTES.md`, `ANALYSIS.md`, `REVIEW.md`, or one-off handoff summaries. New project documents reuse the project's categorized documentation structure, or the smallest fitting `docs/<category>/` location when no convention exists; conventional root and tool-required files stay where their ecosystem expects them.
+
+PRDs, proposals, project briefs, and other upstream planning artifacts are read-only unless the user explicitly asks to edit the artifact itself. Asking Janus to implement or continue a plan does not implicitly authorize rewriting its source document.
+
 ## Recoverable project state
 
 After substantive work:

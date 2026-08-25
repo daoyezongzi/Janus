@@ -15,6 +15,7 @@
 
 ## Completed
 
+- [x] Prevent unrequested process-document side files while retaining warranted durable plans and explicit-only PRD edits.
 - [x] Add lightweight commit-when-applicable handling without mandatory batching or automatic push.
 - [x] Add durable plans and explicit context recovery for large or long-running tasks.
 - [x] Define the risk-adaptive Janus workflow.

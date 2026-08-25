@@ -50,3 +50,13 @@
 - **Decision:** Keep `skills/developing/SKILL.md` as the normative execution source; README stays a concise overview and `debugging` delegates repository handoff instead of duplicating Git rules.
 - **Reason:** Local commits improve recoverability and session handoff without restoring Superpowers-style mandatory plans, worktrees, approval gates, or forced commit batching.
 - **Verification:** The changed `developing` and `debugging` skills passed `quick_validate.py`; the README normative-source link resolves; `git diff --check` reported no formatting errors.
+
+## 2026-08-25 - Constrain documentation side effects
+
+- **Changed:** Added documentation-discipline rules to the normative `developing` skill and summarized them in the README.
+- **Decision:** Keep warranted durable plans, including the `docs/plans/YYYY-MM-DD-<task>.md` fallback, as an intentional part of the Janus workflow.
+- **Decision:** Use the project's existing log and TODO for ordinary execution state instead of generating standalone `NOTES.md`, `ANALYSIS.md`, `REVIEW.md`, `SUMMARY.md`, or ad hoc handoff files.
+- **Decision:** Put warranted new project documents in an existing categorized documentation structure, or the smallest fitting `docs/<category>/` location when no convention exists; preserve conventional root and tool-required paths.
+- **Decision:** Treat PRDs, proposals, project briefs, product plans, and other upstream planning artifacts as read-only unless the user explicitly asks to edit the artifact itself.
+- **Reason:** Preserve durable planning and context recovery without scattering unrequested process documents across project repositories or silently changing product intent.
+- **Verification:** All three repository skills and the installed `developing` skill passed `quick_validate.py`; the repository and installed `SKILL.md` hashes match; `git diff --check` reported no formatting errors.
