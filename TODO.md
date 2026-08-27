@@ -6,6 +6,7 @@
 - [x] Replace the registered Superpowers workflow skills with Janus in the local Codex skill directory.
 - [ ] Verify Janus skill installation and discovery in a fresh Codex session.
 - [ ] Test the Idea Refiner -> Janus handoff using an actual PRD artifact.
+- [ ] Forward-test a visual checkpoint on one real UI or architecture decision.
 
 ## Later
 
@@ -15,6 +16,7 @@
 
 ## Completed
 
+- [x] Add an optional static visual checkpoint to brainstorming without introducing a server or runtime dependency.
 - [x] Prevent unrequested process-document side files while retaining warranted durable plans and explicit-only PRD edits.
 - [x] Add lightweight commit-when-applicable handling without mandatory batching or automatic push.
 - [x] Add durable plans and explicit context recovery for large or long-running tasks.

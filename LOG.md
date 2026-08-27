@@ -1,5 +1,16 @@
 # Janus Log
 
+## 2026-08-27 - Add lightweight visual checkpoints
+
+- **Changed:** Added an optional visual branch to `brainstorming`, a focused usage reference, and a self-contained HTML comparison template.
+- **Decision:** Use a temporary static page only when seeing layout, hierarchy, spatial relationships, or design alternatives materially improves the decision.
+- **Decision:** Keep feedback in the conversation. Local page clicks may highlight an option, but Janus does not add a server, WebSocket channel, persistent session, telemetry, or browser-to-agent event bridge.
+- **Decision:** Treat visual checkpoints as disposable design aids. Implemented frontends continue to use their own development server and verification workflow.
+- **Reason:** Preserve the useful visual-feedback idea from Superpowers while keeping Janus lightweight, host-agnostic, and free of a maintained web runtime.
+- **Verification:** All three repository skills passed `quick_validate.py`; the template's inline JavaScript compiled successfully; its required files and responsive/accessibility markers are present; and no remote asset or browser-network call was found.
+- **Constraint:** The Codex in-app browser blocks local `file://` navigation, so interaction was not replayed there. The remaining real-world forward test stays explicit in `TODO.md` instead of introducing a preview server solely for testing.
+- **Follow-up:** Forward-test the workflow on a real visual decision before adding any further automation.
+
 ## 2026-08-16 - Initialize Janus V1
 
 - **Changed:** Created the Janus repository shape, three core skills, README, license, and state files.

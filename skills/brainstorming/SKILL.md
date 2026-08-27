@@ -29,6 +29,23 @@ Answer only the questions that affect the next decision:
 
 Prefer the simplest design that supports the next plausible change. Reject speculative abstraction and unrelated cleanup.
 
+## Optional visual checkpoint
+
+Use a visual checkpoint when the next decision depends on seeing layout,
+visual hierarchy, spatial relationships, interaction flow, or a side-by-side
+design comparison. Do not use it for requirements, scope, textual tradeoffs,
+API choices, or other questions that are clearer in conversation.
+
+Before creating one, state the decision the preview is meant to clarify. Then
+read [references/visual-checkpoint.md](references/visual-checkpoint.md) and
+follow its lightweight static-HTML workflow. The checkpoint is optional and
+must degrade cleanly to an in-chat sketch when the host cannot preview a local
+HTML file.
+
+A visual checkpoint is a disposable design aid, not an application runtime.
+For an implemented frontend, use the project's real development server and
+verification workflow through the developing skill.
+
 ## Research framing
 
 Move through this chain when it helps:
@@ -70,5 +87,7 @@ Return a proportionate Working Plan or a clear handoff to `developing`. For broa
 - Treating a research problem as a feature backlog.
 - Rewriting an authoritative PRD or research brief without an identified contradiction.
 - Adding a user approval round only because a template says so.
+- Building a server, live-reload channel, or browser event bridge for a disposable visual checkpoint.
+- Treating a static mockup as evidence that an implemented frontend works.
 
 The goal is understanding before significant change, not ceremony for its own sake.

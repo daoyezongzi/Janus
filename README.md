@@ -27,6 +27,12 @@ Janus is inspired by [obra/superpowers](https://github.com/obra/superpowers). It
 | `developing` | Main workflow: context, proportionate Working Plan, self-review, build/run, verification, context recovery, project recording, diff inspection, commit when applicable, and report. |
 | `debugging` | Compressed evidence-first root-cause diagnosis for bugs, failed tests, unexpected results, and research anomalies. |
 
+The `brainstorming` skill also includes an optional lightweight visual
+checkpoint for decisions that are genuinely easier to judge by seeing a
+mockup, layout comparison, or diagram. It uses a temporary self-contained HTML
+file and the host's existing preview capability; Janus does not add a server,
+live-reload channel, browser event bridge, or frontend runtime.
+
 ## Compatibility with specialized skills
 
 Janus is designed to coexist with domain skills. If a skill is explicitly invoked or has already produced an authoritative upstream artifact, Janus consumes that output and continues from the appropriate stage instead of repeating its responsibility.
@@ -68,6 +74,11 @@ uncertainty x impact x reversibility
 - **High risk:** brainstorm, detailed Working Plan, self-review, isolation if useful, stronger tests or review, verification, state update, diff/artifact inspection, commit when applicable, report.
 
 TDD, worktrees, subagents, and formal review are risk-based controls. They are not default ceremony. Verification is the invariant: do not claim success without fresh evidence.
+
+Visual checkpoints follow the same rule. Use one only when the decision turns
+on layout, visual hierarchy, or spatial comparison. It is a disposable design
+aid, not evidence that an implemented frontend works; real applications are
+still run and verified through their own development server and tests.
 
 ## Working Plan
 
