@@ -38,8 +38,8 @@
 
 ## 2026-08-16 - Replace active Superpowers registration
 
-- **Changed:** Moved the 14 active Superpowers workflow skill directories and its `.tmp` plugin cache out of the active Codex paths into `C:\Users\Soyo\Documents\Codex\2026-08-16\yao\work\removed-superpowers-2026-08-16`.
-- **Changed:** Installed Janus `brainstorming`, `developing`, and `debugging` from the public Janus repository into `C:\Users\Soyo\.codex\skills`.
+- **Changed:** Moved the 14 active Superpowers workflow skill directories and its `.tmp` plugin cache out of the active Codex paths into a local archive outside the active skills directory.
+- **Changed:** Installed Janus `brainstorming`, `developing`, and `debugging` from the public Janus repository into the configured Codex skills directory.
 - **Verification:** All three installed skills passed `quick_validate.py`; their `SKILL.md` hashes match the Janus repository; no active Superpowers plugin path or old workflow directory remains.
 - **Preserved:** Frontend skills, `socrates`, PDF, Office, and `idea-refiner` were not changed. The historical `claude_imports` Superpowers archive was left untouched because it is not registered or active.
 - **Result:** Janus is now the active lightweight workflow while Idea Refiner remains an independent optional upstream companion.

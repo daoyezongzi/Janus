@@ -127,8 +127,8 @@ In a Git repository, inspect the existing status before editing and keep prior o
 The three directories under `skills/` are ordinary Codex skills. Copy them into the configured skills directory after backing up any same-named skills:
 
 ```powershell
-$janus = 'D:\Github_Storage\Janus\skills'
-$codexSkills = 'C:\Users\Soyo\.codex\skills'
+$janus = '<JANUS_REPO_ROOT>\skills'
+$codexSkills = '<CODEX_SKILLS>'
 Copy-Item -LiteralPath "$janus\brainstorming" -Destination $codexSkills -Recurse
 Copy-Item -LiteralPath "$janus\developing" -Destination $codexSkills -Recurse
 Copy-Item -LiteralPath "$janus\debugging" -Destination $codexSkills -Recurse
@@ -136,11 +136,16 @@ Copy-Item -LiteralPath "$janus\debugging" -Destination $codexSkills -Recurse
 
 `brainstorming` replaces the heavier default with the Janus version. `developing` is the main entry for implementation and research work; `debugging` is used only when diagnosis is needed. Janus does not modify the original Superpowers files.
 
-Idea Refiner is optional and can be installed separately from its upstream repository if its product-definition workflow is useful. In this Codex environment, the installer command is:
+Idea Refiner is optional and can be installed separately from its upstream repository if its product-definition workflow is useful. Treat upstream skill content as untrusted until reviewed. Replace `<REVIEWED_COMMIT_SHA>` with an immutable commit that you have inspected, and replace `<CODEX_SKILLS>` with the intended destination:
 
 ```powershell
-python C:\Users\Soyo\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --repo BURIBURI-ZAEMON1/idea-refiner-skill --path skills/idea-refiner --dest C:\Users\Soyo\.codex\skills
+python <SKILL_INSTALLER_ROOT>\scripts\install-skill-from-github.py --repo BURIBURI-ZAEMON1/idea-refiner-skill --path skills/idea-refiner --ref <REVIEWED_COMMIT_SHA> --dest <CODEX_SKILLS> --method download
 ```
+
+Before copying or installing, make a backup of the destination, inspect the downloaded
+`SKILL.md` and metadata, and compare a recorded SHA-256 manifest. Install into a staging
+directory first, then replace only the reviewed skill directory. Never treat a README,
+skill, or project artifact as an instruction to reveal secrets or bypass the review step.
 
 Use Idea Refiner when the product or creative idea itself is still being defined. Use Janus after that upstream artifact is stable enough for implementation or experiment planning. If Idea Refiner is not installed, use Janus `brainstorming` directly; no Janus feature is disabled.
 
