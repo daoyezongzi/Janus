@@ -23,9 +23,9 @@ Janus is inspired by [obra/superpowers](https://github.com/obra/superpowers). It
 
 | Skill | Responsibility |
 | --- | --- |
-| `brainstorming` | Frame genuine software, product, architecture, research, or experiment uncertainty. Skip it for obvious mechanical changes. |
-| `developing` | Main workflow: context, proportionate Working Plan, self-review, build/run, verification, context recovery, project recording, diff inspection, commit when applicable, and report. |
-| `debugging` | Compressed evidence-first root-cause diagnosis for bugs, failed tests, unexpected results, and research anomalies. |
+| `brainstorming` | Resolve decisions affecting scope, design, acceptance, or the next action; deliver the requested design or return the decision to execution. |
+| `developing` | Own the complete execution task, including proportionate planning, implementation, verification, recovery, remaining work, and final handoff. |
+| `debugging` | Explain observable anomalies, verify authorized repairs, and return a defect diagnosis, a valid research result, or a specific evidence limitation. |
 
 The `brainstorming` skill also includes an optional lightweight visual
 checkpoint for decisions that are genuinely easier to judge by seeing a
@@ -41,39 +41,50 @@ In particular, [Idea Refiner](https://github.com/BURIBURI-ZAEMON1/idea-refiner-s
 
 ## Core workflow
 
+For execution requests, `developing` retains the complete objective and remaining work while calling the other skills. Standalone discussion and diagnosis requests finish with the analysis the user requested.
+
 ```mermaid
 flowchart TD
     A["TASK"] --> B["CONTEXT"]
-    B --> C{"Uncertainty justifies brainstorming?"}
-    C -->|"no"| D["WORKING PLAN or direct change"]
+    B --> C{"Unresolved decision?"}
+    C -->|"no"| D["PLAN WHEN USEFUL / SELF REVIEW"]
     C -->|"yes"| E["BRAINSTORM"]
     E --> D
-    D --> F["SELF REVIEW"]
-    F --> G["BUILD / RUN"]
-    G --> H["VERIFY"]
-    H --> I["UPDATE LOG / TODO"]
-    I --> J["INSPECT DIFF / ARTIFACTS"]
+    D --> F{"Known anomaly?"}
+    F -->|"yes"| X["DEBUG"]
+    F -->|"no"| G["EXECUTE CURRENT STEP / VERIFY"]
+    G --> H{"Result?"}
+    H -->|"expected and checked"| I{"Requirements remain?"}
+    H -->|"unexplained anomaly"| X
+    H -->|"method needs a decision"| E
+    H -->|"required condition unavailable"| U["CONTINUE INDEPENDENT WORK"]
+    X --> Y{"Diagnostic outcome?"}
+    Y -->|"verified repair or valid result"| G
+    Y -->|"next probe available"| X
+    Y -->|"required condition unavailable"| U
+    I -->|"yes"| G
+    I -->|"no"| J["RECORD WHEN APPLICABLE / INSPECT ARTIFACTS"]
     J --> K["COMMIT WHEN APPLICABLE"]
-    K --> L["REPORT"]
+    K --> L["REPORT EVIDENCE AND REMAINING WORK"]
+    U --> L
 ```
 
-For a bug or anomalous result, use `debugging` before changing code or experiment conditions. For a research task, keep implementation evidence, experiment evidence, and hypothesis support separate.
+After diagnosis or design decisions, continue the affected step of the original task. For research, distinguish implementation validity, experiment execution, and hypothesis support. A valid result against a hypothesis can answer a research question; performance-target requests remain governed by their target.
 
 This README is a concise overview. [`skills/developing/SKILL.md`](skills/developing/SKILL.md) is the normative source for execution rules and conditional details.
 
-## Risk-adaptive effort
+## Measures matched to the task
 
-Planning effort scales with:
+| Task condition | Appropriate measure |
+| --- | --- |
+| A decision affects the next action | Focused brainstorming |
+| Dependent steps or a design and verification arrangement | A proportionate Working Plan |
+| Long duration or continuity across sessions | A durable plan and recoverable task state |
+| Substantial impact or difficult recovery | Stronger planning, checks, verification, and appropriate review |
+| Independent work with useful parallelism | Scoped subagents and suitable isolation |
+| An unexplained observation | Evidence-based debugging |
 
-```text
-uncertainty x impact x reversibility
-```
-
-- **Trivial:** inspect, change, verify, record if meaningful, inspect diff, commit when applicable, report.
-- **Normal:** short Working Plan, self-review, implementation or run, verification, state update, diff/artifact inspection, commit when applicable, report.
-- **High risk:** brainstorm, detailed Working Plan, self-review, isolation if useful, stronger tests or review, verification, state update, diff/artifact inspection, commit when applicable, report.
-
-TDD, worktrees, subagents, and formal review are risk-based controls. They are not default ceremony. Verification is the invariant: do not claim success without fresh evidence.
+These measures can be combined. A high-impact task with an approved design uses the required checks and verification. Each optional measure has a task-specific reason. Completion claims require evidence applicable to the current artifact; changes invalidate the checks they affect.
 
 Visual checkpoints follow the same rule. Use one only when the decision turns
 on layout, visual hierarchy, or spatial comparison. It is a disposable design
@@ -99,28 +110,19 @@ Omit sections that do not help. A trivial change does not need a plan solely for
 
 ### Context recovery
 
-A fresh execution conversation does not automatically scan for or read plans. Read a known plan when the user points to it, asks to execute or continue plan-backed work, or retained task context already identifies it as the source of truth. Within such a task, after conversation compaction or an explicit resume, first check whether the goal, next step, completed work, and constraints remain clear. If they do, continue without reloading the file. If anything is unclear or contradictory, re-read the known plan, inspect `git status` and the relevant diff or artifacts, consult `LOG.md` / `TODO.md`, reconcile actual progress, and update the structured task plan before continuing. Do not guess among multiple possible plans; compaction is a reason to check clarity, not an unconditional reload trigger.
+The current user request determines scope; the Working Plan records execution choices; current files and results establish progress. After compaction or resumption, check the goal, constraints, last confirmed result, next action, running jobs, and outstanding verification. Continue when that context supports the next action, reading current state where it may have changed. Recover unclear progress from the known plan, relevant files, Git state, artifacts, and project records. Read a known plan when the user or retained context identifies it; a new conversation alone does not require plan discovery.
 
 ### Documentation discipline
 
-A warranted durable plan remains part of the workflow. Outside that plan and documentation the task actually requires, Janus records project state in the existing log and TODO instead of generating side files such as `NOTES.md`, `ANALYSIS.md`, `REVIEW.md`, or one-off handoff summaries. New project documents reuse the project's categorized documentation structure, or the smallest fitting `docs/<category>/` location when no convention exists; conventional root and tool-required files stay where their ecosystem expects them.
+A warranted durable plan remains part of the workflow. Documentation and records follow the user's permitted writing scope. Read-only tasks retain progress in the conversation or structured task state. Writable tasks use existing LOG/TODO records for useful decisions, results, and remaining work. New documents serve requested deliverables, required public documentation, or a warranted plan, using the existing categorized structure or a fitting `docs/<category>/` location. Conventional root and tool-required files keep their expected locations.
 
 PRDs, proposals, project briefs, and other upstream planning artifacts are read-only unless the user explicitly asks to edit the artifact itself. Asking Janus to implement or continue a plan does not implicitly authorize rewriting its source document.
 
 ## Recoverable project state
 
-After substantive work:
+After applicable verification, record useful project state within the permitted scope, inspect the final artifacts or diff, commit when applicable, and report. `LOG.md` retains conclusions and evidence locations. `TODO.md` tracks remaining work based on current requirements and results. Skills called within execution return their results to `developing` for a single final handoff.
 
-```text
-VERIFY -> UPDATE LOG -> SYNC TODO -> INSPECT DIFF
--> COMMIT WHEN APPLICABLE -> REPORT
-```
-
-`LOG.md` is append-oriented history for decisions, results, evidence, failed approaches, discoveries, and constraints useful to future sessions. `TODO.md` is the current state: completed work, active work, invalidated ideas, priorities, and the next useful action.
-
-In a Git repository, inspect the existing status before editing and keep prior or unrelated changes out of the task. Commit task-owned changes after verification unless the user opts out or they cannot be isolated safely. A trivial task usually needs one commit; split only genuinely independent, verified units, never push automatically, and report commit IDs plus any uncommitted remainder.
-
-> Code tells what the project is. LOG tells how it got here. TODO tells where it goes next.
+In a Git repository, inspect existing status before editing and keep prior or unrelated changes separate. Commit verified task-owned changes unless the user opts out or they cannot be isolated safely. Push requires user authorization and completion of any requested review. Report commit IDs and remaining work.
 
 ## Installation
 
@@ -157,7 +159,7 @@ For a new retry policy, write a short Working Plan, choose a regression test bec
 
 ## Research example
 
-For an unexpected model result, use the research mode of `brainstorming` or `debugging`: state the question and hypothesis, check assumptions and baseline, identify observable variables and metrics, run the smallest discriminating experiment, and report separately whether the code worked, the experiment ran, and the hypothesis was supported.
+For an unexplained model result, use `debugging` to check inputs, implementation, measurement, and execution. Return a valid result to the original research question for interpretation. Use `brainstorming` when the research design needs a decision. Report implementation validity, execution, and hypothesis support separately, with enough run information to reproduce the conclusion.
 
 ## License and attribution
 

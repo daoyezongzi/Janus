@@ -1,6 +1,6 @@
 ---
 name: debugging
-description: Use when a bug, failed test, unexpected result, or research anomaly needs root-cause diagnosis before changing code, data, or experiment conditions.
+description: Use when the user requests diagnosis or an observable bug, failed test, unexpected result, or research anomaly needs an evidence-based explanation.
 ---
 
 # Janus Debugging
@@ -9,7 +9,11 @@ description: Use when a bug, failed test, unexpected result, or research anomaly
 
 Do not stack speculative fixes. Each change should test an explicit explanation of the observed divergence.
 
-For a long-running or multi-step investigation, keep a durable Working Plan. Within an already plan-backed investigation, after conversation compaction or an explicit request to resume, check whether the diagnostic state is still clear; if not, re-read the known plan and reconcile it with the current reproduction evidence, repository diff, and recorded results before continuing. A fresh conversation alone does not trigger plan discovery.
+## Task context
+
+Identify the requested explanation, expected behavior, observed result, and permitted operations. A diagnosis request defines its own deliverable; repairs and project writes must remain within the current authorization.
+
+When called during execution, retain the original goal, affected step, and remaining requirements. Use the current conversation or existing Working Plan for diagnostic state, and follow [developing](../developing/SKILL.md) for conditional planning and context recovery.
 
 ## Workflow
 
@@ -17,11 +21,19 @@ For a long-running or multi-step investigation, keep a durable Working Plan. Wit
 2. **Gather evidence** from output, logs, state, versions, data, environment, and the final known-good comparison.
 3. **Locate divergence:** identify the first point where actual behavior differs from expected behavior.
 4. **State one hypothesis** that explains that divergence and what evidence would disprove it.
-5. **Write a minimal test or probe** that distinguishes the hypothesis from alternatives.
-6. **Confirm the root cause** before making a broad fix.
-7. **Apply the smallest fix** that addresses the cause, without unrelated cleanup.
-8. **Rerun the original reproduction** and relevant regression, integration, or experiment checks.
-9. **Record the result** when it changes future work: cause, evidence, fix, limitation, and implication.
+5. **Run a discriminating probe:** state the expected observations, execute the test or experiment, and read the actual result.
+6. **Check probe validity:** confirm that the intended operation ran and its observations can distinguish the explanations. A probe that did not run as intended or observe the relevant behavior leaves the hypothesis unresolved.
+7. **Choose the supported outcome** below, preserving the evidence and any remaining uncertainty.
+
+## Diagnostic outcomes
+
+| Finding | Next action |
+| --- | --- |
+| Evidence supports an implementation, data, environment, or measurement defect | Within the authorized scope, apply the smallest repair addressing the cause and rerun the original reproduction and affected checks. A diagnosis-only request can finish with the supported explanation. |
+| The research result passes its validity checks | Return the result and evidence to the research task for interpretation against its question and evaluation method. |
+| Evidence remains insufficient | Identify the next probe that can add evidence. If the necessary input or execution condition is unavailable, state the limitation and continue independent authorized work. |
+
+Confirm the cause before a broad repair. Use a probe to support or reject a hypothesis only when the probe ran correctly and its observations are sufficient for that judgment.
 
 ## Evidence checklist
 
@@ -44,9 +56,11 @@ For an experiment that produces an unexpected result, distinguish:
 
 Do not change the model, data, metric, and environment at the same time. Preserve a control or baseline whenever possible.
 
+A valid result can support or challenge a research hypothesis, or establish a limit on the available evidence. Completion depends on the requested research deliverable; a requested performance target remains incomplete until the relevant evidence meets that target. Change evaluation criteria only when the requirements or measurement evidence justify the change.
+
 ## When hypotheses fail
 
-After repeated failed hypotheses, stop patching and recheck:
+When repeated probes add no evidence or successive hypotheses fail, recheck:
 
 - assumptions;
 - architecture or data flow;
@@ -56,6 +70,8 @@ After repeated failed hypotheses, stop patching and recheck:
 
 ## Completion standard
 
-Do not report a fix merely because the edited code looks plausible. Report the reproduction command, evidence, root cause, change, rerun result, and any remaining uncertainty.
+For a standalone diagnosis, report the requested explanation, supporting evidence, and remaining uncertainty. If repair was authorized and performed, also report the actual change, original reproduction command, and rerun results. State when evidence is still insufficient to complete the diagnosis.
 
-If the investigation changes files, finish the repository handoff through `developing`, including project recording and commit when applicable; do not duplicate that workflow here.
+When called during execution, return these findings to `developing` at the affected original step. Recheck the original task's remaining requirements and continue them; resolving the local issue only establishes its corresponding checks.
+
+Follow [developing](../developing/SKILL.md) for applicable recording and repository handoff, within the task's write permissions. Embedded investigations use the original task's final handoff.

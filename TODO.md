@@ -7,6 +7,7 @@
 - [ ] Verify Janus skill installation and discovery in a fresh Codex session.
 - [ ] Test the Idea Refiner -> Janus handoff using an actual PRD artifact.
 - [ ] Forward-test a visual checkpoint on one real UI or architecture decision.
+- [ ] Exercise conditional workflow behavior on real tasks involving an interrupted implementation, changed user scope, and a valid research result against a hypothesis.
 
 ## Later
 
@@ -16,6 +17,7 @@
 
 ## Completed
 
+- [x] Define conditional workflow selection, complete-task ownership, diagnostic outcomes, evidence validity, and scoped project recording.
 - [x] Add an optional static visual checkpoint to brainstorming without introducing a server or runtime dependency.
 - [x] Prevent unrequested process-document side files while retaining warranted durable plans and explicit-only PRD edits.
 - [x] Add lightweight commit-when-applicable handling without mandatory batching or automatic push.

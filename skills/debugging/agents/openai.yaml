@@ -1,4 +1,4 @@
 interface:
   display_name: "Janus Debugging"
-  short_description: "Evidence-first diagnosis with recovery"
-  default_prompt: "Use $debugging to diagnose unexpected behavior from evidence, recover long investigations when needed, verify the smallest fix, and hand repository changes to $developing."
+  short_description: "Diagnose anomalies with valid evidence"
+  default_prompt: "Use $debugging to test explanations with valid probes, repair supported defects within the authorized scope, and return the evidence and any remaining uncertainty to the original task."

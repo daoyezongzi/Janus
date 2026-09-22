@@ -1,4 +1,4 @@
 interface:
   display_name: "Janus Developing"
-  short_description: "Risk-adaptive delivery, recovery, and Git commits"
-  default_prompt: "Use $developing to plan proportionately, implement, verify, recover context when needed, record, commit when applicable, and report."
+  short_description: "Complete execution, verification, and task handoff"
+  default_prompt: "Use $developing to complete the authorized task, choose appropriate planning and verification, resume remaining work after specialist calls, and hand off verified results."

@@ -1,5 +1,16 @@
 # Janus Log
 
+## 2026-09-22 - Define conditional workflow and complete-task handoff
+
+- **Behavior:** `developing` retains the complete request and remaining work. `brainstorming` returns decisions and acceptance requirements; `debugging` returns supported findings and applicable repair evidence to the affected original step.
+- **Selection:** Planning, discussion, persistence, verification, isolation, and delegation follow their task conditions. High-impact work receives appropriate checks and review, with discussion focused on unresolved decisions.
+- **Research:** Experiment validity, execution, and hypothesis support have distinct completion evidence. Valid research findings are interpreted against the requested question, and performance targets retain their stated acceptance requirements.
+- **State:** Current requests determine scope; current artifacts and results establish progress. Changed inputs invalidate affected checks. Recording follows writing permissions and uses existing project records.
+- **Verification:** All three repository skills passed `quick_validate.py`; PyYAML validated their UI metadata, markdown-it-py parsed eight Markdown files and checked six local link targets, and `git diff --check` passed.
+- **Task evidence:** An independent agent used the revised developing and debugging skills for an actual read-only comparison of the three repository skills and their local installations. It reported file and SHA-256 differences, verified referenced files, respected the read-only scope, and distinguished file evidence from untested host loading behavior.
+- **Plan:** The implementation scope and real-task acceptance conditions are recorded in `docs/plans/2026-09-22-janus-workflow-logic.md`.
+- **Validation scope:** Format, reference, and logical consistency checks are distinct from real-task behavior checks. Broader execution coverage remains tracked in TODO.
+
 ## 2026-08-27 - Add lightweight visual checkpoints
 
 - **Changed:** Added an optional visual branch to `brainstorming`, a focused usage reference, and a self-contained HTML comparison template.

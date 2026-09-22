@@ -1,13 +1,13 @@
 ---
 name: brainstorming
-description: Use when a software, research, experiment, product, or architecture task has unresolved uncertainty, meaningful design choices, competing hypotheses, or scope decisions that make direct execution risky.
+description: Use when unresolved software, product, architecture, or research questions affect the requested design, scope, acceptance criteria, or next action.
 ---
 
 # Janus Brainstorming
 
 ## Purpose
 
-Use the smallest amount of structured thinking needed to make the next action clear. Skip this skill for obvious, mechanical, reversible edits.
+Resolve the questions that affect the requested decision or next action. Match the discussion to the current user request and its authorized scope. Task impact alone does not require a new design discussion when the relevant decisions are already clear.
 
 ## Decide the mode
 
@@ -48,19 +48,9 @@ verification workflow through the developing skill.
 
 ## Research framing
 
-Move through this chain when it helps:
+Define the research question and hypothesis, relevant assumptions, baseline or control, observable variables, and metrics. Specify the experiment's validity checks separately from the observations that would support or challenge the hypothesis.
 
-```text
-research question
--> hypothesis or claim
--> existing assumptions
--> baseline or control
--> observable variables
--> metrics
--> minimal experiment
--> success criterion
--> failure or falsification criterion
-```
+When evidence is needed to decide, identify a discriminating experiment and state how its possible observations will affect the decision. This can be the next action in an authorized execution task; a discussion-only request can finish with the experiment design.
 
 Keep engineering claims separate from research claims:
 
@@ -74,18 +64,26 @@ Keep engineering claims separate from research claims:
 2. Resolve what can be resolved independently.
 3. Ask one focused question only when the missing answer changes scope, design, or risk.
 4. Offer a recommendation and its tradeoff when alternatives matter.
-5. Stop when the next action is clear; do not require a formal approval gate for an obvious low-risk decision.
+5. Stop when the requested discussion is complete or the decisions needed for the next authorized action are clear. Do not add an approval round solely because a template contains one.
 
-If another skill was explicitly invoked, or has produced an authoritative upstream artifact such as a PRD, consume that output instead of repeating its responsibility. Continue from the appropriate Janus stage and preserve the upstream artifact as the source of truth. This integration is optional: if no upstream skill is installed or invoked, the software and research modes above remain complete and usable on their own.
+If another skill was explicitly invoked, or has produced an authoritative upstream artifact such as a PRD, consume its still-applicable decisions and constraints. Resolve contradictions affecting the current decision, and edit upstream artifacts only within explicit authorization. If no upstream skill is available, the software and research modes above remain usable on their own.
 
-Return a proportionate Working Plan or a clear handoff to `developing`. For broad, long-running, high-risk, or multi-step work, persist that plan using the durable-plan rules in `developing`; do not create separate spec and plan documents here.
+## Completion and return
+
+Return the requested decisions, their supporting reasons and constraints, and any unresolved issue that affects their use. When execution is part of the request, include the next action and its acceptance requirements.
+
+- For a standalone discussion or design request, finish when the requested deliverable is complete within its authorized scope.
+- When called during execution, preserve the original goal, current step, and remaining requirements. Return to `developing` with the decisions or evidence-gathering action needed to continue that task.
+- If a necessary answer remains unavailable, identify the affected decision and missing information; continue independent work already covered by the request.
+
+Use the current conversation or existing Working Plan for the handoff. Follow [developing](../developing/SKILL.md) for conditional planning, context recovery, project recording, and final execution handoff.
 
 ## Red flags
 
 - Designing for every imaginable future.
 - Asking questions whose answers do not change the work.
 - Treating a research problem as a feature backlog.
-- Rewriting an authoritative PRD or research brief without an identified contradiction.
+- Editing an upstream PRD or research brief without authorization.
 - Adding a user approval round only because a template says so.
 - Building a server, live-reload channel, or browser event bridge for a disposable visual checkpoint.
 - Treating a static mockup as evidence that an implemented frontend works.

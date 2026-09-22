@@ -1,4 +1,4 @@
 interface:
   display_name: "Janus Brainstorming"
-  short_description: "Frame uncertainty before substantial work"
-  default_prompt: "Use $brainstorming when uncertainty justifies thinking before action, and persist the handoff plan only for large or long-running work."
+  short_description: "Resolve questions affecting the next decision"
+  default_prompt: "Use $brainstorming to resolve the questions affecting this request, complete the requested design discussion, or return decisions and acceptance requirements to the ongoing execution task."
