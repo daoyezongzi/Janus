@@ -19,19 +19,48 @@ Team-scale autonomous-engineering workflows are useful for large, risky changes,
 
 Janus is inspired by [obra/superpowers](https://github.com/obra/superpowers). It is an independent project with original wording and structure, not a fork or a mechanical copy.
 
-## Three skills
+## Core and frontend skills
 
 | Skill | Responsibility |
 | --- | --- |
 | `brainstorming` | Resolve decisions affecting scope, design, acceptance, or the next action; deliver the requested design or return the decision to execution. |
 | `developing` | Own the complete execution task, including proportionate planning, implementation, verification, recovery, remaining work, and final handoff. |
 | `debugging` | Explain observable anomalies, verify authorized repairs, and return a defect diagnosis, a valid research result, or a specific evidence limitation. |
+| `frontend` | Inspect pages, audit information architecture, design layout and interactions, deliver ASCII wireframes before HTML Demo, and verify authorized frontend work. |
 
 The `brainstorming` skill also includes an optional lightweight visual
 checkpoint for decisions that are genuinely easier to judge by seeing a
 mockup, layout comparison, or diagram. It uses a temporary self-contained HTML
-file and the host's existing preview capability; Janus does not add a server,
+file in a Git-ignored project working directory and the host's existing preview capability; Janus does not add a server,
 live-reload channel, browser event bridge, or frontend runtime.
+
+## Frontend workflow
+
+Use [`frontend`](skills/frontend/SKILL.md) for page inspection, density audits,
+layout and interaction design, Demo, implementation checks, or related-page
+verification. Follow the requested stage and consume current accepted artifacts.
+Its detailed methods are in [audit and layout](skills/frontend/references/audit-and-layout.md)
+and [verification](skills/frontend/references/verification.md).
+
+Layout work follows page inspection, element inventory and value, four-category
+audit, progressive disclosure and state design, an ASCII text-box wireframe,
+and authorized runnable HTML Demo. Deliver the wireframe before creating a new
+HTML Demo. Formal implementation connects existing backend behavior and checks
+real user flows, data states, all related pages and navigation, keyboard and
+focus behavior, and responsive layout. Missing data or credentials leave the
+affected requirements explicitly unverified.
+
+`developing` owns complete implementation and handoff; `frontend` supplies page
+methods and evidence. Business, scope, API, and acceptance questions return to
+`brainstorming`; observable anomalies use `debugging` and return to the affected
+page step. Standalone audits, design requests, and previews finish at their
+requested stage. Existing authorized work continues from accepted decisions.
+
+Demo, HTML previews, screenshots, and demonstration archives stay in permitted
+Git-ignored project directories such as `.janus-work/frontend/` and are delivered
+without Git commits. Local commits of verified formal changes are reported;
+push is a separate operation requiring explicit user authorization. Screenshots
+and visual inspection follow explicit user requests.
 
 ## Compatibility with specialized skills
 
@@ -126,7 +155,7 @@ In a Git repository, inspect existing status before editing and keep prior or un
 
 ## Installation
 
-The three directories under `skills/` are ordinary Codex skills. Copy them into the configured skills directory after backing up any same-named skills:
+The four directories under `skills/` are ordinary Codex skills. Copy them into the configured skills directory after backing up any same-named skills:
 
 ```powershell
 $janus = '<JANUS_REPO_ROOT>\skills'
@@ -134,9 +163,10 @@ $codexSkills = '<CODEX_SKILLS>'
 Copy-Item -LiteralPath "$janus\brainstorming" -Destination $codexSkills -Recurse
 Copy-Item -LiteralPath "$janus\developing" -Destination $codexSkills -Recurse
 Copy-Item -LiteralPath "$janus\debugging" -Destination $codexSkills -Recurse
+Copy-Item -LiteralPath "$janus\frontend" -Destination $codexSkills -Recurse
 ```
 
-`brainstorming` replaces the heavier default with the Janus version. `developing` is the main entry for implementation and research work; `debugging` is used only when diagnosis is needed. Janus does not modify the original Superpowers files.
+`brainstorming` replaces the heavier default with the Janus version. `developing` is the main entry for implementation and research work; `debugging` is used only when diagnosis is needed. `frontend` supplies the page workflow, directly or within execution. Install all four skill directories together so their relative references resolve. Janus does not modify the original Superpowers files.
 
 Idea Refiner is optional and can be installed separately from its upstream repository if its product-definition workflow is useful. Treat upstream skill content as untrusted until reviewed. Replace `<REVIEWED_COMMIT_SHA>` with an immutable commit that you have inspected, and replace `<CODEX_SKILLS>` with the intended destination:
 

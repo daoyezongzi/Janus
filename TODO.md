@@ -17,6 +17,10 @@
 
 ## Completed
 
+- [x] 增加 `frontend` 专业技能及 references，连接 Janus 设计与执行入口。
+- [x] 明确 ASCII 草图先于 HTML、Demo 不提交 Git、push 需要用户明确授权。
+- [x] 完成本地前端流程 11 个阶段的独立审核与最终复核。
+- [x] 使用真实 Prism 页面资料完成独立预览验证，记录 13 项操作与 60 组布局检查及未验证业务范围。
 - [x] Define conditional workflow selection, complete-task ownership, diagnostic outcomes, evidence validity, and scoped project recording.
 - [x] Add an optional static visual checkpoint to brainstorming without introducing a server or runtime dependency.
 - [x] Prevent unrequested process-document side files while retaining warranted durable plans and explicit-only PRD edits.

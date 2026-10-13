@@ -1,0 +1,4 @@
+interface:
+  display_name: "Janus Frontend"
+  short_description: "Audit, sketch, preview, implement, and verify frontends"
+  default_prompt: "Use $frontend for this page task: inspect the current project, deliver the requested audit or design stage, provide an ASCII wireframe before an HTML Demo, and verify authorized frontend changes with real evidence. Keep Demo artifacts out of Git and return execution results to developing."

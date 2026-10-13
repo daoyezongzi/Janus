@@ -18,6 +18,13 @@ Do not turn a research question into a software architecture discussion. Do not 
 
 ## Software framing
 
+For page information architecture, layout, interaction states, ASCII wireframes,
+or HTML Demo requests, use [frontend](../frontend/SKILL.md) for the requested
+stage. Carry forward the current scope, accepted artifacts, and authorization.
+When frontend brings a question about business meaning, feature ownership,
+scope, API semantics, or acceptance, answer that question directly and return
+the decision to its affected frontend stage.
+
 Answer only the questions that affect the next decision:
 
 1. What problem and intended use case are being served?
@@ -36,13 +43,15 @@ visual hierarchy, spatial relationships, interaction flow, or a side-by-side
 design comparison. Do not use it for requirements, scope, textual tradeoffs,
 API choices, or other questions that are clearer in conversation.
 
-Before creating one, state the decision the preview is meant to clarify. Then
+For frontend pages, follow frontend's ASCII-before-HTML and Demo workflow.
+For other visual decisions, state the decision the preview is meant to clarify. Then
 read [references/visual-checkpoint.md](references/visual-checkpoint.md) and
 follow its lightweight static-HTML workflow. The checkpoint is optional and
 must degrade cleanly to an in-chat sketch when the host cannot preview a local
 HTML file.
 
-A visual checkpoint is a disposable design aid, not an application runtime.
+A visual checkpoint is a disposable design aid. Keep Demo files in a permitted,
+Git-ignored project working directory and deliver them without committing them.
 For an implemented frontend, use the project's real development server and
 verification workflow through the developing skill.
 

@@ -25,6 +25,7 @@ For a standalone discussion or diagnosis request, the requested analysis can be 
 | Condition | Measure |
 | --- | --- |
 | An unresolved decision affects scope, design, acceptance, or the next action | Use `brainstorming` for that decision. |
+| Work concerns web pages, information architecture, layout, frontend interactions, or page verification | Use [frontend](../frontend/SKILL.md) for the relevant domain stages and evidence. |
 | Steps depend on one another, or design and verification need an explicit arrangement | Use a proportionate Working Plan. |
 | Duration, task span, or expected session boundaries make recovery valuable | Persist the Working Plan. |
 | Failure has substantial impact, recovery is difficult, or core behavior or research conclusions are at stake | Strengthen planning, preconditions, verification, and appropriate independent review. |
@@ -119,6 +120,18 @@ Report implementation validity, experiment execution, and hypothesis support sep
 
 Use an explicitly invoked professional skill or applicable upstream artifact for its domain methods and accepted decisions. Inspect its output and evidence, then continue the remaining work. Resolve contradictions that affect the current operation while continuing independent authorized work. When no upstream artifact is available, use local context and the appropriate Janus skill.
 
+For frontend work, retain the complete execution objective while using
+frontend's page inspection, audit, design, ASCII-before-HTML Demo, and real
+application verification methods. Consume accepted designs and prior stage
+artifacts. Return diagnostic findings to the affected page operation, then
+finish its remaining flows and related pages. A requested audit or preview
+finishes at its authorized stage.
+
+Keep Demo HTML, screenshots, and preview archives in a permitted Git-ignored
+project working directory. Deliver them as files or access links. Formal
+project changes follow the recording and commit rules below; Demo artifacts
+are excluded from commits even when the user wants to retain them.
+
 For each delegated subtask, specify the question, necessary facts, permitted file changes, dependencies, expected artifact, and acceptance evidence. Ask for checkable results, verification performed, and remaining uncertainty. The lead agent checks consequential conclusions and integrated artifacts with effort proportional to their impact. Preserve the complete task's outstanding requirements during delegation.
 
 ## Documentation discipline
@@ -141,8 +154,10 @@ When a specialist or Janus skill was called within an execution task, return its
 If a task changes files in a Git repository, commit the task-owned changes after verification unless the user opts out or they cannot be isolated safely.
 
 - Stage only task-owned changes and inspect what will be committed. Never include pre-existing or unrelated work.
+- Exclude Demo, HTML preview, screenshot, and demonstration archive files. Check their Git ignore status before creating them.
 - A trivial task usually needs one commit. Split only when independently useful, verified changes make separate commits clearer or safer.
 - Use a clear commit message. Push only when the user authorizes it, and satisfy any requested review condition before committing or pushing.
+- Report the local commit result. Treat push as a separate operation requiring the user's explicit authorization.
 - Check repository status once after committing. Report commit IDs and explain any uncommitted remainder.
 
 ## Report

@@ -1,5 +1,18 @@
 # Janus Log
 
+## 2026-10-13 - 接入前端工作流程
+
+- **变更：** 增加 `frontend` 技能、界面元数据以及审计与布局、正式验证两个 references；连接 `brainstorming` 和 `developing`，同步 README 的职责、流程与四个技能的安装说明。
+- **流程：** 覆盖任务与范围、页面理解、元素审计、状态设计、ASCII 草图、HTML Demo、正式修改、真实验证、相关页面核查、审核与提交、演示交付。草图先于 HTML，已有设计与用户修改持续有效。
+- **预览：** 数据不足时使用独立标明的布局控制查看空白结果；需要尚未连接服务的业务操作保持不可用。Demo 与正式业务的证据范围分别记录。
+- **Git：** Demo、HTML 预览与截图包保存于被 Git 忽略的项目工作目录，通过文件交付；正式修改完成 commit 后报告结果，push 需要用户明确授权。
+- **格式验证：** 四个技能通过 `quick_validate.py`，四份 YAML 元数据与 21 个本地 Markdown 引用有效，`git diff --check` 和工作目录忽略检查通过。命令为 `.janus-work/validation-env/bin/python .janus-work/verify_frontend_skills.py`，版本 hash 与结果保存在 `.janus-work/frontend-validation.json`。
+- **独立审核：** `workflow_review` 逐项核查本地流程的 11 个阶段及技能交接，审核通过；读取实际预览和运行证据后复核最终规则，确认结论成立。
+- **实际使用：** `frontend_forward_test` 读取 Prism 当前交易风格页面及接口，先交付审计与 ASCII 草图，再生成独立 HTML。实际浏览器完成 13 项操作检查、12 个宽度、5 种状态和 60 组 DOM 几何检查；没有 JavaScript 错误，8 个 Prism 来源文件的前后 SHA256 一致。
+- **证据：** `.janus-work/frontend-forward-test/` 保存理解、草图、预览、验证脚本和交付记录；`evidence/verification.json`、`run.log` 和 `cleanup.txt` 保存结果与清理记录，全部资料被 Git 忽略。使用现有 Playwright 与 Microsoft Edge，验证命令及完整输出位于交付记录。
+- **覆盖范围：** 实际使用验证覆盖独立预览的 DOM、交互、键盘、焦点、布局与页面历史。缺少有效成交资料、账户和 Prism 服务的真实解析、保存、分析与行情操作保持未验证。测试服务与浏览器进程已关闭。
+- **计划：** 实施范围和验收要求记录于 `docs/plans/2026-10-13-frontend-workflow.md`。
+
 ## 2026-09-22 - Define conditional workflow and complete-task handoff
 
 - **Behavior:** `developing` retains the complete request and remaining work. `brainstorming` returns decisions and acceptance requirements; `debugging` returns supported findings and applicable repair evidence to the affected original step.
